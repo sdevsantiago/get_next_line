@@ -6,7 +6,7 @@
 /*   By: sede-san <sede-san@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:58:59 by sede-san          #+#    #+#             */
-/*   Updated: 2025/01/13 13:48:47 by sede-san         ###   ########.fr       */
+/*   Updated: 2025/08/27 01:51:46 by sede-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,23 @@
 # include <stdint.h>
 # include <unistd.h>
 
+// get_next_line.c
+
 char	*get_next_line(int fd);
 
-/*********************************** Utils ************************************/
+// get_next_line_utils.c
+//! Disclaimer: This functions are used in get_next_line internally and their
+//!             use in any other context is highly discouraged. An internal
+//!             header can't be created due to subject limitations.
+//!             Libft contains a more regularly updated version of this
+//!             functions.
+//!
+//!             Libft: https://github.com/sdevsantiago/Libft
 
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *s);
-char	*ft_gnl_strjoin(char *s1, const char *s2);
-char	*ft_substr(const char *s, unsigned int start, size_t len);
+size_t	gnl_strlen(const char *s);
+char	*gnl_strchr(const char *s, int c);
+char	*gnl_strdup(const char *s);
+char	*gnl_strjoin(char *s1, const char *s2);
+char	*gnl_substr(const char *s, unsigned int start, size_t len);
 
 #endif
