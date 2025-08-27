@@ -6,7 +6,7 @@
 /*   By: sede-san <sede-san@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:40:18 by sede-san          #+#    #+#             */
-/*   Updated: 2024/12/14 10:44:43 by sede-san         ###   ########.fr       */
+/*   Updated: 2025/08/27 01:23:41 by sede-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(void)
     while (count++ < 5)
     {
 		line = get_next_line(STDIN_FILENO);
-        write(STDOUT_FILENO, line, ft_strlen(line));
+        write(STDOUT_FILENO, line, gnl_strlen(line));
         free(line);
         line = NULL;
     }

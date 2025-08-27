@@ -6,7 +6,7 @@
 /*   By: sede-san <sede-san@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 12:34:41 by sede-san          #+#    #+#             */
-/*   Updated: 2024/12/16 23:11:11 by sede-san         ###   ########.fr       */
+/*   Updated: 2025/08/27 01:23:54 by sede-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int main(int argc, char **argv)
 			break;
 		}
 		printf("[%i]:\t%s", ++c2, line);
-		if (!ft_strchr(line, EOL))
+		if (!gnl_strchr(line, EOL))
 			printf("\n");
 		free(line);
 	}
@@ -82,7 +82,7 @@ int main(int argc, char **argv)
 			break;
 		}
 		printf("[%i]:\t%s", ++c3, line);
-		if (!ft_strchr(line, EOL))
+		if (!gnl_strchr(line, EOL))
 			printf("\n");
 		free(line);
 	}
@@ -98,7 +98,7 @@ int main(int argc, char **argv)
 			break;
 		}
 		printf("[%i]:\t%s", ++c1, line);
-		if (!ft_strchr(line, EOL))
+		if (!gnl_strchr(line, EOL))
 			printf("\n");
 		free(line);
 	}
@@ -114,7 +114,7 @@ int main(int argc, char **argv)
 			break;
 		}
 		printf("[%i]:\t%s", ++c2, line);
-		if (!ft_strchr(line, EOL))
+		if (!gnl_strchr(line, EOL))
 			printf("\n");
 		free(line);
 	}
@@ -130,7 +130,7 @@ int main(int argc, char **argv)
 			break;
 		}
 		printf("[%i]:\t%s", ++c3, line);
-		if (!ft_strchr(line, EOL))
+		if (!gnl_strchr(line, EOL))
 			printf("\n");
 		free(line);
 	}
@@ -140,7 +140,7 @@ int main(int argc, char **argv)
 	while ((line = get_next_line(f1)))
 	{
 		printf("[%i]:\t%s", ++c1, line);
-		if (!ft_strchr(line, EOL))
+		if (!gnl_strchr(line, EOL))
 			printf("\n");
 		free(line);
 	}
@@ -152,7 +152,7 @@ int main(int argc, char **argv)
 	while ((line = get_next_line(f2)))
 	{
 		printf("[%i]:\t%s", ++c2, line);
-		if (!ft_strchr(line, EOL))
+		if (!gnl_strchr(line, EOL))
 			printf("\n");
 		free(line);
 	}
@@ -164,7 +164,7 @@ int main(int argc, char **argv)
 	while ((line = get_next_line(f3)))
 	{
 		printf("[%i]:\t%s", ++c3, line);
-		if (!ft_strchr(line, EOL))
+		if (!gnl_strchr(line, EOL))
 			printf("\n");
 		free(line);
 	}
