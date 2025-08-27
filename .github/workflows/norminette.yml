@@ -24,7 +24,7 @@ jobs:
         run: norminette --version
 
       - name: Run Norminette
-        run: norminette -R CheckForbiddenSourceHeader -R CheckDefine -R CheckLine -R CheckVariableName -R CheckFunctionName --use-gitignore > norminette-report.txt
+        run: norminette -R CheckForbiddenSourceHeader -R CheckDefine -R CheckLine -R CheckVariableName -R CheckFunctionName --use-gitignore *.c *.h > norminette-report.txt
 
       - name: Upload Norminette report
         uses: actions/upload-artifact@v4
