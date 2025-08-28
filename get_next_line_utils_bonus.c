@@ -6,14 +6,22 @@
 /*   By: sede-san <sede-san@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:58:54 by sede-san          #+#    #+#             */
-/*   Updated: 2024/12/14 14:30:54 by sede-san         ###   ########.fr       */
+/*   Updated: 2025/08/27 01:38:00 by sede-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
+//! Disclaimer: This functions are used in get_next_line internally and their
+//!             use in any other context is highly discouraged. An internal
+//!             header can't be created due to subject limitations.
+//!             Libft contains a more regularly updated version of this
+//!             functions.
+//!
+//!             Libft: https://github.com/sdevsantiago/Libft
+
 /* Measures a string's length.  */
-size_t	ft_strlen(const char *s)
+size_t	gnl_strlen(const char *s)
 {
 	size_t	i;
 
@@ -24,12 +32,12 @@ size_t	ft_strlen(const char *s)
 }
 
 /*	Duplicates a string.  */
-char	*ft_strdup(const char *s)
+char	*gnl_strdup(const char *s)
 {
 	char	*s_dup;
 	int		i;
 
-	s_dup = (char *)malloc(ft_strlen(s) + 1);
+	s_dup = (char *)malloc(gnl_strlen(s) + 1);
 	if (!s_dup)
 		return (NULL);
 	i = 0;
@@ -44,7 +52,7 @@ char	*ft_strdup(const char *s)
 
 /* Appends the NULL-terminated string S1 and the NULL-terminated string S2
    in a new string.  */
-char	*ft_strjoin(char *s1, const char *s2)
+char	*gnl_strjoin(char *s1, const char *s2)
 {
 	char	*joined;
 	size_t	s1_len;
@@ -54,8 +62,8 @@ char	*ft_strjoin(char *s1, const char *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
+	s1_len = gnl_strlen(s1);
+	s2_len = gnl_strlen(s2);
 	joined = (char *)malloc(sizeof (*joined) * (s1_len + s2_len + 1));
 	if (!joined)
 		return (NULL);
@@ -72,7 +80,7 @@ char	*ft_strjoin(char *s1, const char *s2)
 }
 
 /* Finds the first ocurrence of C in the string S.  */
-char	*ft_strchr(const char *s, int c)
+char	*gnl_strchr(const char *s, int c)
 {
 	while (*s && *s != (char)c)
 		s++;
@@ -83,7 +91,7 @@ char	*ft_strchr(const char *s, int c)
 
 /* Creates a NULL-terminating copy of the string S from the index START
    of LEN characters.  */
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*gnl_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*substr;
 	size_t	s_len;
@@ -91,7 +99,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	s_len = ft_strlen(s);
+	s_len = gnl_strlen(s);
 	if (start > s_len)
 	{
 		start = s_len;
