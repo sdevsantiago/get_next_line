@@ -112,11 +112,11 @@ For detailed info, refer to this project [subject](docs/en.subject.pdf).
 
 2. **Compile your program with the library:**
     ```bash
-    cc -Wall -Wextra -Werror your_file.c path/to/get_next_line/get_next_line.a -I path/to/get_next_line -o your_program
+    cc -Wall -Wextra -Werror your_file.c path/to/get_next_line/get_next_line.a -I path/to/get_next_line/include -o your_program
 
     # or
 
-    cc -Wall -Wextra -Werror your_file.c path/to/get_next_line/get_next_line_bonus.a -I path/to/get_next_line -o your_program
+    cc -Wall -Wextra -Werror your_file.c path/to/get_next_line/get_next_line_bonus.a -I path/to/get_next_line/include -o your_program
     ```
 
 ### Example usage

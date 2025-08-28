@@ -6,83 +6,102 @@
 #    By: sede-san <sede-san@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/30 12:31:40 by sede-san          #+#    #+#              #
-#    Updated: 2025/08/27 02:32:31 by sede-san         ###   ########.fr        #
+#    Updated: 2025/08/28 14:37:44 by sede-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ******************************* Output files ******************************* #
 
-# Executable file
-NAME = get_next_line
-BONUS_NAME = get_next_line_bonus
+NAME 		= get_next_line.a
+BONUS_NAME	= get_next_line_bonus.a
 
 # ************************** Compilation variables *************************** #
 
-# Compiler
-CC = cc
-
-# Compilation flags
-CFLAGS = -Wall -Wextra -Werror
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror -Wunreachable-code
+HEADERS	= -I $(INCLUDE_PATH)
 
 ifdef BUFFER_SIZE
 	CFLAGS += -DBUFFER_SIZE=$(BUFFER_SIZE)
 endif
 
-# Make command with no-print-directory flag
+ifeq ($(DEBUG), 1)
+	CFLAGS += -g3
+endif
+
 MAKE += --no-print-directory
 
 AR = ar rcs
 
 # ****************************** Source files ******************************** #
 
-# Source files path
 SRC_PATH = src
 
-# Source files
-SRC = \
-	get_next_line.c \
-	get_next_line_utils.c
+SRC =									\
+	$(SRC_PATH)/get_next_line.c			\
+	$(SRC_PATH)/get_next_line_utils.c
 
-# Bonus files
-BONUS_SRC = \
-	get_next_line_bonus.c \
-	get_next_line_utils_bonus.c \
+BONUS_SRC =									\
+	$(SRC_PATH)/get_next_line_bonus.c		\
+	$(SRC_PATH)/get_next_line_utils_bonus.c
+
+INCLUDE_PATH = ./include
 
 # ****************************** Object files ******************************** #
 
-OBJ = $(SRC:.c=.o)
+OBJS_PATH = build
 
-BONUS_OBJ = $(BONUS_SRC:.c=.o)
+OBJS = $(SRC:$(SRC_PATH)/%.c=$(OBJS_PATH)/%.o)
+BONUS_OBJS = $(BONUS_SRC:$(SRC_PATH)/%.c=$(OBJS_PATH)/%.o)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJS_PATH)/%.o: $(SRC_PATH)/%.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(HEADERS)
+	@echo "$< compiled"
 
 # ********************************* Rules ************************************ #
 
 all: mandatory bonus
 .PHONY: all
 
-mandatory: $(NAME).a
+mandatory: $(NAME)
 .PHONY: mandatory
 
-$(NAME).a: $(OBJ)
-	$(AR) $(NAME).a $(OBJ)
-
-bonus: $(NAME)_bonus.a
+bonus: $(BONUS_NAME)
 .PHONY: bonus
 
-$(NAME)_bonus.a: $(BONUS_OBJ)
-	$(AR) $(NAME)_bonus.a $(BONUS_OBJ)
+$(NAME): $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
+	@echo "$(GREEN)$(EMOJI_CHECK) $(NAME) ready.$(RESET)"
+
+$(BONUS_NAME): $(BONUS_OBJS)
+	@$(AR) $(BONUS_NAME) $(BONUS_OBJS)
+	@echo "$(GREEN)$(EMOJI_CHECK) $(BONUS_NAME) ready.$(RESET)"
 
 clean:
-	rm -f $(OBJ)
-	rm -f $(BONUS_OBJ)
+	@rm -rf $(OBJS_PATH)
+	@echo "$(RED)$(EMOJI_BROOM) Object files cleaned.$(RESET)"
 .PHONY: clean
 
 fclean: clean
-	rm -f $(NAME).a
-	rm -f $(NAME)_bonus.a
+	@rm -f $(NAME)
+	@rm -f $(BONUS_NAME)
+	@echo "$(RED)$(EMOJI_BROOM) Binaries cleaned.$(RESET)"
 .PHONY: fclean
 
 re: fclean all
 .PHONY: re
+
+# ***************************** Style variables ****************************** #
+
+RED = \033[0;31m
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+BLUE = \033[0;34m
+RESET = \033[0m
+
+EMOJI_BROOM = 🧹
+EMOJI_CHECK = ✅
+EMOJI_CROSS = ❌
+EMOJI_WRENCH = 🔧
+EMOJI_BOX = 📦
