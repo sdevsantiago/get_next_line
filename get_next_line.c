@@ -6,7 +6,7 @@
 /*   By: sede-san <sede-san@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:58:57 by sede-san          #+#    #+#             */
-/*   Updated: 2025/08/27 01:23:59 by sede-san         ###   ########.fr       */
+/*   Updated: 2025/08/27 20:06:44 by sede-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*get_next_line(
 	static char	*buffer;
 	size_t		len;
 
-	if (fd < STDIN_FILENO || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	if (!buffer)
 		buffer = gnl_strdup("");
