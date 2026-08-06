@@ -6,7 +6,7 @@
 /*   By: sede-san <sede-san@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:58:57 by sede-san          #+#    #+#             */
-/*   Updated: 2025/08/27 20:06:44 by sede-san         ###   ########.fr       */
+/*   Updated: 2026/08/07 00:45:06 by sede-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*get_next_line(
 	}
 	buffer = fill_buffer(fd, buffer);
 	if (!buffer || !*buffer)
-		return (free(buffer), NULL);
+		return (free(buffer), buffer = NULL, NULL);
 	len = (uintptr_t)gnl_strchr(buffer, EOL) - (uintptr_t)buffer;
 	line = gnl_substr(buffer, 0, len + 1);
 	buffer = resize_buffer(buffer);
